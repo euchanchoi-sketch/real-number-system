@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
     <title>Real Number System</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 40px;
             background-color: #f5f5f5;
-            line-height: 1.6;
+            line-height: 1.7;
         }
         h1 {
             text-align: center;
@@ -20,50 +21,166 @@
         }
         .box {
             background: white;
-            padding: 15px;
-            margin: 15px 0;
+            padding: 20px;
+            margin: 20px 0;
             border-radius: 10px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .math {
+            font-family: "Courier New", monospace;
+            background: #eef;
+            padding: 10px;
+            border-radius: 5px;
+            display: inline-block;
+            margin: 10px 0;
         }
     </style>
 </head>
 <body>
 
-    <h1>Real Number System</h1>
-    <p style="text-align:center;">해석학에서의 실수 체계를 간단히 정리한 페이지</p>
+<h1>Real Number System</h1>
+<p style="text-align:center;">Structure and Fundamental Properties in Real Analysis</p>
 
-    <div class="box">
-        <h2>1. 자연수 (N)</h2>
-        <p>1, 2, 3, ... 과 같이 세는 데 사용하는 수의 집합</p>
-    </div>
+<div class="box">
+    <h2>1. Structure of Number Systems</h2>
+    <p class="math">
+        ℕ ⊂ ℤ ⊂ ℚ ⊂ ℝ
+    </p>
+    <p>
+        The real numbers ℝ include both rational and irrational numbers
+        and form a continuous number system.
+    </p>
+</div>
 
-    <div class="box">
-        <h2>2. 정수 (Z)</h2>
-        <p>..., -2, -1, 0, 1, 2, ... 와 같이 음수까지 포함한 집합</p>
-    </div>
+<div class="box">
+    <h2>2. Completeness of ℝ</h2>
 
-    <div class="box">
-        <h2>3. 유리수 (Q)</h2>
-        <p>분수 형태로 나타낼 수 있는 수 (예: 1/2, -3/4)</p>
-    </div>
+    <p><b>Theorem (Least Upper Bound Property).</b></p>
 
-    <div class="box">
-        <h2>4. 무리수</h2>
-        <p>분수로 나타낼 수 없는 수 (예: √2, π)</p>
-    </div>
+    <p class="math">
+        Every nonempty subset S ⊂ ℝ that is bounded above
+        has a least upper bound in ℝ.
+    </p>
 
-    <div class="box">
-        <h2>5. 실수 (R)</h2>
-        <p>유리수와 무리수를 모두 포함하는 수 체계</p>
-    </div>
+    <h3>Example</h3>
+    <p class="math">
+        S = { x ∈ ℚ | x² &lt; 2 }
+    </p>
 
-    <div class="box">
-        <h2>6. 완비성 (Completeness)</h2>
-        <p>
-            실수체계의 가장 중요한 성질로,  
-            모든 유계 집합은 상한(최소 상계)을 가진다.
-        </p>
-    </div>
+    <p>
+        This set has no supremum in ℚ,
+        but in ℝ its supremum is √2.
+        This illustrates the completeness of ℝ.
+    </p>
+</div>
+
+<div class="box">
+    <h2>3. Archimedean Principle</h2>
+
+    <p><b>Theorem.</b> Let a, b ∈ ℝ with a > 0.
+    Then there exists n ∈ ℕ such that</p>
+
+    <p class="math">
+        b &lt; na
+    </p>
+
+    <h3>Proof</h3>
+
+    <p><b>Case 1: b ≤ a</b></p>
+    <p>
+        If b < a, take n = 1. Then b < a = na.
+        If b = a, take n = 2. Then b < 2a = na.
+    </p>
+
+    <p><b>Case 2: a < b</b></p>
+    <p>
+        Suppose that no such natural number exists.
+        Then for all n ∈ ℕ, we have na ≤ b.
+    </p>
+
+    <p>
+        Hence the set {na : n ∈ ℕ} is bounded above by b.
+        By completeness of ℝ, let α = sup{na}.
+    </p>
+
+    <p>
+        Since a > 0, α - a < α.
+        Thus α - a is not an upper bound,
+        so there exists n ∈ ℕ such that
+    </p>
+
+    <p class="math">
+        na > α - a
+    </p>
+
+    <p>
+        Adding a gives
+    </p>
+
+    <p class="math">
+        (n+1)a > α
+    </p>
+
+    <p>
+        which contradicts that α is an upper bound.
+        Therefore, there exists n ∈ ℕ such that b < na.
+    </p>
+
+    <h3>Example</h3>
+    <p>
+        Let a = 0.5 and b = 10.
+        Then n = 21 gives na = 10.5 > 10.
+    </p>
+
+</div>
+
+<div class="box">
+    <h2>4. ε-δ Definition of Limit</h2>
+
+    <p><b>Definition.</b></p>
+
+    <p class="math">
+        ∀ ε > 0, ∃ δ > 0 such that 0 &lt; |x - a| &lt; δ ⇒ |f(x) - L| &lt; ε
+    </p>
+
+    <p>
+        This means that f(x) can be made arbitrarily close to L
+        when x is sufficiently close to a.
+    </p>
+
+    <h3>Example</h3>
+    <p>
+        Let f(x) = x², a = 2. Then L = 4.
+    </p>
+
+    <p class="math">
+        |x² - 4| = |x - 2||x + 2|
+    </p>
+
+    <p>
+        If |x - 2| < 1, then |x + 2| < 5.
+        Hence,
+    </p>
+
+    <p class="math">
+        |x² - 4| < 5|x - 2|
+    </p>
+
+    <p>
+        To make this less than ε, choose δ = ε/5.
+    </p>
+
+</div>
+
+<div class="box">
+    <h2>5. Conclusion</h2>
+    <p>
+        The real number system is characterized by completeness
+        and the Archimedean property.
+        Using these, limits are rigorously defined by the ε-δ method,
+        forming the foundation of real analysis.
+    </p>
+</div>
 
 </body>
 </html>
